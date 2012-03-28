@@ -13,4 +13,6 @@ Gem::Specification.new do |gem|
   gem.name          = "celt-ruby"
   gem.require_paths = ["lib"]
   gem.version       = Celt::VERSION
+
+  gem.add_dependency "ffi"
 end
