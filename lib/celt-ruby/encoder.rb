@@ -41,7 +41,7 @@ module Celt
       out = FFI::MemoryPointer.new :char, data.size + 1
       buf = FFI::MemoryPointer.new :char, data.size + 1
       buf.put_string 0, data
-      len = Celt.celt_encode @encoder, buf, nil, out, size
+      len = Celt.celt_encode @encoder, buf, @frame_size, out, size
       out.read_string_length len
     end
   end
