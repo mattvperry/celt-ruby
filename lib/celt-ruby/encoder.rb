@@ -1,6 +1,7 @@
 module Celt
   class Encoder
-    attr_reader :sample_rate, :frame_size, :channels
+    attr_reader :sample_rate, :frame_size, :channels,
+                :prediction_request, :vbr_rate
 
     def initialize(sample_rate, frame_size, channels)
       @sample_rate = sample_rate
@@ -22,16 +23,18 @@ module Celt
       bv.read_int32
     end
 
-    def set_prediction_request(value)
+    def prediction_request=(value)
+      @prediction_request = value
       v_ptr = FFI::MemoryPointer.new :int
       v_ptr.put_int 0, value
-      Celt.celt_encoder_ctl @encoder, Celt::Constants::CELT_SET_PREDICTION_REQUEST, v_ptr
+      Celt.celt_encoder_ctl @encoder, Celt::Constants::CELT_SET_PREDICTION_REQUEST, :pointer, v_ptr
     end
 
-    def set_vbr_rate(value)
+    def vbr_rate=(value)
+      @vbr_rate = value
       v_ptr = FFI::MemoryPointer.new :int
       v_ptr.put_int 0, value
-      Celt.celt_encoder_ctl @encoder, Celt::Constants::CELT_SET_VBR_REQUEST, v_ptr
+      Celt.celt_encoder_ctl @encoder, Celt::Constants::CELT_SET_VBR_REQUEST, :pointer, v_ptr
     end
 
     def encode(data, size)
