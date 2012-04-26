@@ -3,7 +3,7 @@ celt-ruby
 
 == DESCRIPTION:
 
-CELT-Ruby is a Ruby Gem for working with the CELT Audio CODEC.
+CELT-Ruby is a Ruby Gem for working with the CELT Audio Codec.
 CELT-Ruby uses the Ruby-FFI extension to wrap the native CELT library code.
 This means that you must have CELT installed in order for this gem to work.
 
@@ -15,6 +15,11 @@ However, I will accept any pull requests with additional functionality should so
 
 What this library can do:
 * Encode raw audio to CELT
+
+== REQUIREMENTS:
+
+* Ruby >= 1.9.2
+* CELT 0.7 Library
 
 == INSTALL:
 
