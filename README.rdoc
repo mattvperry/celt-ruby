@@ -1,0 +1,37 @@
+celt-ruby
+    http://www.github.com/perrym5/celt-ruby
+
+== DESCRIPTION:
+
+CELT-Ruby is a Ruby Gem for working with the CELT Audio CODEC.
+CELT-Ruby uses the Ruby-FFI extension to wrap the native CELT library code.
+This means that you must have CELT installed in order for this gem to work.
+
+== FEATURES:
+
+This gem was designed to fill a specific role in another one of my projects.
+As a result, the feature set is relatively small compared to the native libraries.
+However, I will accept any pull requests with additional functionality should someone need it.
+
+What this library can do:
+* Encode raw audio to CELT
+
+== INSTALL:
+
+    [sudo] gem install celt-ruby
+
+== USAGE:
+
+    # Create new encoder with a sample rate of 48 kHz, a frame size of 480 bytes and 1 channel
+    encoder = Celt::Encoder.new 48000, 480, 1
+    # Set the prediction request to 0
+    encoder.prediction_request = 0
+    # Set the VBR rate to 60,000
+    encoder.vbr_rate = 60000
+
+    # Return the bitstream version for this version of CELT
+    encoder.bitstream_version
+
+    # Encode some raw audio
+    compressed_size = [@encoder.vbr_rate / 800, 127].min
+    encoded = encoder.encode(raw_audio, compressed_size)
