@@ -5,6 +5,7 @@ Gem::Specification.new do |gem|
   gem.authors       = ["Matthew Perry"]
   gem.email         = ["perrym5@rpi.edu"]
   gem.description   = %q{Ruby FFI Gem for the CELT Audio Codec}
+  gem.summary       = %q{Ruby FFI wrapper for the CELT Audio Codec C library for low latency audio encoding}
   gem.homepage      = ""
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
