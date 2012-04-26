@@ -40,3 +40,6 @@ What this library can do:
     # Encode some raw audio
     compressed_size = [@encoder.vbr_rate / 800, 127].min
     encoded = encoder.encode(raw_audio, compressed_size)
+
+    # Safely destroy encoder
+    encoder.destroy
