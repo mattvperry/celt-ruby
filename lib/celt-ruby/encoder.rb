@@ -9,7 +9,7 @@ module Celt
       @channels = channels
       @size = size
       @out = FFI::MemoryPointer.new :char, @size + 1
-      @buf = FFI::MemoryPointer.new :char, @size + 1
+      @buf = FFI::MemoryPointer.new :char, @frame_size * 2 + 1
       @mode = Celt.celt_mode_create sample_rate, frame_size, nil
       @encoder = Celt.celt_encoder_create @mode, channels, nil
     end
