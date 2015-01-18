@@ -28,7 +28,7 @@ What this library can do:
 == USAGE:
 
     # Create new encoder with a sample rate of 48 kHz, a frame size of 480 bytes and 1 channel
-    encoder = Celt::Encoder.new 48000, 480, 1
+    encoder = Celt::Encoder.new 48000, 480, 1, compressed_size
     # Set the prediction request to 0
     encoder.prediction_request = 0
     # Set the VBR rate to 60,000
@@ -39,7 +39,7 @@ What this library can do:
 
     # Encode some raw audio
     compressed_size = [@encoder.vbr_rate / 800, 127].min
-    encoded = encoder.encode(raw_audio, compressed_size)
+    encoded = encoder.encode raw_audio
 
     # Safely destroy encoder
     encoder.destroy
